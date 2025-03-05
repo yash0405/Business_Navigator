@@ -1,0 +1,97 @@
+{% extends "consumer_base.html"%} {% block title %}Consumer_Home{% endblock %}
+
+{% block content %}
+<div class="container3">
+    <h1>Welcome to Our Platform: {{ user.name.capitalize() }}</h1><hr>
+    <button onclick="connected_shops()" >Connected Shops</button><hr>
+    <h2>Featured Shops</h2>
+    <div class="filters">
+        <form action="/consumer/filter_shops" method="GET">
+            <div class="filter-options">
+                <div class="filter-option">
+                    <label for="location">Filter by Location:</label>
+                    <input type="text" id="location" name="location" placeholder="Enter location...">
+                </div>
+                <div class="filter-option">
+                    <label for="name">Filter by Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter name...">
+                </div>
+            </div>
+            <button type="submit">Filter</button>
+        </form>
+    </div>
+
+    <div class="section">
+        
+        <div class="shop-list">
+            {% for shop in shops %}
+            <div class="shop" >
+                <div class="shop-name">{{ shop.shop_name.capitalize() }}</div>
+                <button class="shop-button connect-button" data-shop-id="{{ shop.id }}" onclick="connectShop(this)" style="margin-left: auto; float: right; font-size: 0.8em;">
+                    <i class="{{ 'fas fa-check' if shop.connected else 'fas fa-link' }}"></i>
+                </button>
+                <div class="shop-details">
+                    Location: {{ shop.location.capitalize() }}
+                    <br>
+                    Contact: {{ shop.contact }}
+                </div>
+                <button class="shop-button" onclick="enter_shop({{ shop.id }})">Enter Shop</button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function connectShop(button) {
+        var shopId = button.getAttribute('data-shop-id');
+        var icon = button.querySelector("i");
+    
+        if (icon.classList.contains("fa-link")) {
+            // If the icon is a link, connect to the shop
+            fetch('/consumer/connect_shop/' + shopId, {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "connected") {
+                    // Change the icon to a tick mark
+                    icon.classList.remove("fa-link");
+                    icon.classList.add("fa-check");
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        } else if (icon.classList.contains("fa-check")) {
+            // If the icon is a tick mark, disconnect from the shop
+            fetch('/consumer/disconnect_shop/' + shopId, {
+                method: 'POST',
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "disconnected") {
+                    // Change the icon to a link
+                    icon.classList.remove("fa-check");
+                    icon.classList.add("fa-link");
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    }
+</script>
+<script>
+    function connected_shops(){
+        window.open("/consumer/connected_shops")
+    }
+</script>  
+    
+    
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+{%  endblock %}

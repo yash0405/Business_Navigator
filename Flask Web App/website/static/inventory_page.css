@@ -1,0 +1,49 @@
+.container1 {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+    margin-bottom: 30px;
+}
+.section-header {
+    background-color: #2165ae;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+}
+.section-content {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.container1 label {
+    font-weight: bold;
+}
+
+.container1 input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.container1 button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #157eef;
+    color: #fff;
+    cursor: pointer;
+}
+.container1 button:hover {
+    background-color: #0056b3;
+}
+.container1 hr{
+    height: 8px;
+    background: black;
+}

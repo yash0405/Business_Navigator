@@ -1,0 +1,54 @@
+{% extends "base.html"%} {% block title %}Debt Management{% endblock %}
+
+{% block content %}
+<div class="container5">
+    <h1>Debt Records: {{ consumer.name.capitalize() }}</h1>
+    <form id="debt-form" method="POST" action="/add_debt/{{ current_user.id }}/{{ consumer.consumer_id }}" >
+        <label for="item-name">Item Name:</label>
+        <input type="text" id="item-name" name="item-name" required>
+        
+        <label for="amount">Bill Amount:</label>
+        <input type="text" id="amount" name="amount" required><br>       
+        <button type="submit">Add Record</button>
+    </form>
+
+    <h3>Total Debt: &#8377 {{ total_amount if total_amount is not none else 0 }}</h3><hr style="height: 8px; background: black;">
+
+    <h5>Item Name <span style="padding-left: 9%; padding-right: 7%;">Bill Amount</span> <span style="padding-left: 3%;">Purchase Date</span> </h5>
+    <ul id="debt-list">
+        {% for debt in debts %}
+        <li id="debt-{{ debt.id }}">
+            <span>{{ debt.item }}</span>
+            <span>&#8377 {{ debt.amount }}</span>
+            <span>{{ debt.date.strftime('%Y-%m-%d') }}</span>
+            <button class="delete-button" style="background-color: rgb(245, 237, 225); padding: 10px 20px;" onclick="deleteDebt({{ debt.id }}, {{ current_user.id }}, {{ consumer.consumer_id }})">
+                <span aria-hidden="true">❌</span>
+            </button>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<script>
+    function deleteDebt(debtId, shopkeeper_id, consumer_id) {
+    // Send an AJAX request to delete the debt record
+    fetch(`/delete_debt/${debtId}`, { method: 'DELETE' })
+        .then(response => {
+            if (response.ok) {
+                // Remove the deleted record from UI without reloading/redirecting
+                const debtElement = document.getElementById(`debt-${debtId}`);
+                if (debtElement) {
+                    debtElement.remove();
+                    window.location.href = `/debt_management/` + shopkeeper_id+`/`+ consumer_id;
+                }
+            } else {
+                throw new Error('Failed to delete debt record');
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting debt record:', error.message);
+        });
+    }
+
+</script>
+{% endblock %}

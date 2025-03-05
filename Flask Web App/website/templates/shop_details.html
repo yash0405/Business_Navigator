@@ -1,0 +1,23 @@
+{% extends "consumer_base.html"%} {% block title %}Shop details{% endblock %}
+{% block content %}
+<div class="container4">
+    <h1>{{ shop.shop_name.capitalize() }} - Inventory</h1><hr style="height: 8px; background: black;">
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for items...">
+        <button onclick="search_items({{ shop.id }})">Search</button>
+    </div>
+
+    <div class="shop_inventory-list">
+        <div class="shop_item-list">
+            {% for item in inventory %}
+            <div class="shop_item">
+                <p><strong>Item Name:</strong> {{ item.item_name.capitalize() }}</p>
+                <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+                <p><strong>Price:</strong> {{ item.price }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

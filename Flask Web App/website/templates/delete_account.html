@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            text-align: center;
+        }
+        .confirm-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #157eef;
+            color: #fff;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .cancel-button {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            color: #333;
+            cursor: pointer;
+        }
+        .button-container .cancel-button:hover {
+            background-color: #f0f0f0;
+        }
+        .confirm-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Account</h1>
+        <p>Are you sure you want to delete your account?</p>
+        <div class="button-container">
+            <form action="/delete_account" method="POST">
+                <button class="confirm-button" type="submit">Yes, Delete My Account</button>
+            </form>
+            <button class="cancel-button" onclick="window.history.back()">No, Cancel</button>
+        </div>
+    </div>
+</body>
+</html>

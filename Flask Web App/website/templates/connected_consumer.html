@@ -1,0 +1,28 @@
+{% extends "base.html"%} {% block title %}Connected Consumer{% endblock %}
+
+{% block content %} 
+<div class="container3">
+    <h1>Welcome {{ current_user.shop_name.capitalize() }}</h1><hr>
+
+    <div class="section">
+        <h2 style="text-align: center;">Connected Consumers</h2>
+        <div class="shop-list">
+            {% for consumer in connected_consumers %}
+            <div class="shop" >
+                <div class="shop-name">{{ consumer.name.capitalize() }}</div>
+                <div class="shop-details">
+                    Contact: {{ consumer.contact }}
+                </div>
+                <button class="shop-button" onclick="update_debt({{ consumer.consumer_id }}, {{ user.id }})">Update Debt</button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    function update_debt(Consumer_id, shopkeeper_id) {
+        window.location.href = "/debt_management/" + shopkeeper_id + "/" + Consumer_id;
+    }
+</script>
+{% endblock %}

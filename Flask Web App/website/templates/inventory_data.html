@@ -1,0 +1,17 @@
+{% extends "base.html"%} {% block title %}Inventory Data{% endblock %}
+
+{% block content %}
+<div class="container2">
+    <h1>Inventory Items</h1>
+    
+    <div class="items-list">
+        {% for item in user.inventory %}
+            <div class="item">
+                <p><strong>Item Name:</strong> {{ item.item_name.capitalize() }}</p>
+                <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+                <p><strong>Price:</strong> {{ item.price }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{%  endblock %}

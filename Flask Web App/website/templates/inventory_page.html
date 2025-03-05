@@ -1,0 +1,78 @@
+{% extends "base.html"%} {% block title %}Inventory Management{% endblock %}
+
+{% block content %} 
+<div class="container1">
+    
+    <div class="section">
+        <h1 style="text-align: center;">Inventory Management</h1><hr style="height: 8px; background: black;">
+        <div class="section">
+            <div class="section-header">Search in Inventory</div>
+            <div class="section-content">
+                <form id="searchItemForm" action="{{ url_for('auth.search_item') }}"  method="POST">
+                    <div class="form-group">
+                        <label for="searchItemName">Item Name:</label>
+                        <input type="text" id="searchItemName" name="searchItemName" required>
+                    </div>
+                    <button type="submit">Search</button>
+                </form>
+                <div class="result" id="searchResult"></div>
+            </div>
+        </div>
+        <div class="section-header">Add Item to Inventory</div>
+        <div class="section-content">
+            <form id="addItemForm" action="{{ url_for('auth.add_item') }}" method="POST">
+                <div class="form-group">
+                    <label for="itemName">Item Name:</label>
+                    <input type="text" id="itemName" name="itemName" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemQuantity">Quantity:</label>
+                    <input type="text" id="itemQuantity" name="itemQuantity"required>
+                </div>
+                <div class="form-group">
+                    <label for="itemPrice">Price:</label>
+                    <input type="text" id="itemPrice" name="itemPrice" required>
+                </div>
+                <button type="submit">Add Item</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">Remove Item from Inventory</div>
+        <div class="section-content">
+            <form id="removeItemForm" action="{{ url_for('auth.remove_item') }}" method="POST">
+                <div class="form-group">
+                    <label for="removeItemName">Item Name:</label>
+                    <input type="text" id="removeItemName" name="removeItemName" required>
+                </div>
+                <button type="submit">Remove Item</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">Update Item in Inventory</div>
+        <div class="section-content">
+            <form id="updateItemForm" action="{{ url_for('auth.update_item') }}" method="POST">
+                <div class="form-group">
+                    <label for="updateItemName">Item Name:</label>
+                    <input type="text" id="updateItemName" name="updateItemName" required>
+                </div>
+                <div class="form-group">
+                    <label for="updateItemQuantity">New Quantity:</label>
+                    <input type="text" id="updateItemQuantity" name="updateItemQuantity" required>
+                </div>
+                <div class="form-group">
+                    <label for="updateItemPrice">New Price:</label>
+                    <input type="text" id="updateItemPrice" name="updateItemPrice" required>
+                </div>
+                <button type="submit">Update Item</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+    
+    <button onclick="show_inventory()">View Complete Inventory</button>
+</div>
+{% endblock %}

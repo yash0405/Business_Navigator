@@ -1,0 +1,18 @@
+{% extends "base.html"%} {% block title %}Home{% endblock %}
+
+{% block content %} 
+<!-- <link rel="stylesheet" href="Flask Web App\website\static\inventory_page_style.css"> -->
+<div class="home">
+<div class="abc">
+    <div class="wrapper1">
+        <form action="">
+            <h1>Welcome {{ user.shop_name.capitalize() }}</h1><br>
+            <div class="select-option">
+                <button class="selection" onclick="inventory()">Enter the inventory section </button>
+            </div><br>
+            <button class="selection" onclick="connected_consumer()">Enter to debt section </button><br>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}

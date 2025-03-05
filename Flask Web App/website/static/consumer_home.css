@@ -1,0 +1,109 @@
+.container3 {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container3 h1 {
+    text-align: center;
+    color: #333333;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+
+.filter-options {
+    display: flex;
+    gap: 20px;
+}
+
+.filter-option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.filter-option label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #333333;
+}
+
+.filter-option input[type="text"] {
+    flex: 1; /* Take remaining space */
+    padding: 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.container3 button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.container3 button:hover {
+    background-color: #0056b3;
+}
+
+.section {
+    margin-top: 20px;
+}
+
+.shop-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.shop {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: calc(33.33% - 20px); /* Adjusted width for three shops in a row */
+    transition: all 0.3s ease;
+}
+
+.shop:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.shop-name {
+    font-weight: bold;
+    font-size: 20px;
+    color: #333333;
+}
+
+.shop-details {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #555555;
+}
+
+.shop-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.shop-button:hover {
+    background-color: #0056b3;
+}
+
+.container3 hr{
+    height: 8px;
+    background: black;
+}

@@ -1,0 +1,46 @@
+{% extends "base.html"%} {% block title %}Sign Up{% endblock %}
+{% block content %} 
+<form method="post">
+    <h3 align="center">Sign Up</h3>
+
+    <div class="form-group">
+        <label for="shop_name">Enter the name of shop</label>
+        <input type="text" class="form-control" id="shop_name" name="shop_name" placeholder="Enter name" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Enter the your name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="location">Enter the location</label>
+        <input type="text" class="form-control" id="location" name="location" placeholder="Enter the area where your shop is located" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="Enter the valid email address"
+    />
+    <div class="form-group">
+        <label for="contact">Enter the your contact number</label>
+        <input type="tel" class="form-control" id="contact" name="contact" placeholder="Enter number" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="password1">Create a new password</label>
+        <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter password (min 5 characters)" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="password2">Confirm password</label>
+        <input type="password" class="form-control" id="password2" name="password2" placeholder="password must be same as above" required/>
+    </div> <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

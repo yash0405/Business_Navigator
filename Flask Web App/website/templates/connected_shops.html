@@ -1,0 +1,29 @@
+{% extends "consumer_base.html"%} {% block title %}Connected Shops{% endblock %}
+
+{% block content %}
+<div class="container3">
+    <div class="section">
+        <h2 style="text-align: center;">Connected Shops</h2>
+        <div class="shop-list">
+            {% for shop in connected_shops %}
+            <div class="shop" >
+                <div class="shop-name">{{ shop.shop_name.capitalize() }}</div>
+                <div class="shop-details">
+                    Location: {{ shop.location.capitalize() }}
+                </div>
+                <div class="shop-details">
+                    Contact: {{ shop.contact }}
+                </div>
+                <button class="shop-button" onclick="check_debt_record({{ user.consumer_id }}, {{ shop.id }})">Check Debt Record</button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    function check_debt_record(Consumer_id, shopkeeper_id) {
+        window.location.href = "/consumer/check_debt_record/" + shopkeeper_id + "/" + Consumer_id;
+    }
+</script>
+{% endblock %}

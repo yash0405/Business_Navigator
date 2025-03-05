@@ -1,0 +1,38 @@
+{% extends "consumer_base.html"%} {% block title %}Debt Record{% endblock %}
+
+{% block content %}
+<div class="container5">
+    <h1 style="text-align: center;">Debt Records: {{ shopkeeper.shop_name.capitalize() }}</h1><hr style="height: 8px; background: black;">
+    <h3>Total Debt: &#8377 {{ total_amount if total_amount is not none else 0 }}</h3><hr style="height: 8px; background: black;">
+    <h5>Item Name <span style="padding-left: 20%; padding-right: 18%;">Bill Amount</span>
+        <span style="padding-left: 3%;">Purchase Date</span></h5>
+        <ul id="debt-list">
+            {% for debt in debts %}
+            <li id="debt-{{ debt.id }}">
+                <span>{{ debt.item }}</span>
+                <span> &#8377 {{ debt.amount }}</span>
+                <span>{{ debt.date.strftime('%Y-%m-%d') }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+</div>
+<style>
+    .container5 ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.container5 li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.container5 li span {
+    flex-grow: 1;
+}
+</style>
+{% endblock %}
